@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.Console", "App.Console\App.Console.csproj", "{34F03B0F-E0F1-427F-A6BD-F208931DB9CA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.Generator_Planu", "App.Generator_Planu\App.Generator_Planu.csproj", "{34F03B0F-E0F1-427F-A6BD-F208931DB9CA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.Excel", "App.Excel\App.Excel.csproj", "{399F5945-FC21-47CA-B040-17E1D342DD2A}"
 EndProject

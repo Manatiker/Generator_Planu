@@ -1,19 +1,17 @@
-﻿using App.Console;
+﻿using App.Generator_Planu;
 using OfficeOpenXml;
 
 namespace App.Excel;
 
 public class FileGenerator
 {
-    public static void GenerateFile()
+    public static void GenerateFile(int monthNumber)
     {
         ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
         
         using var package = new ExcelPackage();
-
-        var date = DateTime.Now.AddMonths(1);
         
-        var days = GetWorkingDaysForAMonth(date);
+        var days = GetWorkingDaysForAMonth(monthNumber);
         
         const string REF_SHEET_NAME = "Odniesienia";
 
@@ -33,20 +31,20 @@ public class FileGenerator
         var sanitizer = new WorksheetSanitizer();
         sanitizer.HideWorksheet(package, REF_SHEET_NAME);
 
-        package.SaveAs(new FileInfo("C:\\CodePlayground\\Excel_Ania\\Plan_"+MonthDictionary.GetMonthName(date.Month)+"_"+date.Year+".xlsx"));
+        package.SaveAs(new FileInfo(@".\Plany\Plan_"+MonthDictionary.GetMonthName(monthNumber)+"_2025.xlsx"));
     }
     
-    private static List<DateTime> GetWorkingDaysForAMonth(DateTime date)
+    private static List<DateTime> GetWorkingDaysForAMonth(int monthNumber)
     {
         var days = new List<DateTime>();
-        var daysInMonth = DateTime.DaysInMonth(date.Year, date.Month);
+        var daysInMonth = DateTime.DaysInMonth(2025, monthNumber);
+        
         for (int i = 1; i <= daysInMonth; i++)
         {
-            var day = new DateTime(date.Year, date.Month, i);
-            if (day.DayOfWeek != DayOfWeek.Saturday && day.DayOfWeek != DayOfWeek.Sunday)
-            {
-                days.Add(day);
-            }
+            var day = new DateTime(2025, monthNumber, i);
+            if (day.DayOfWeek is DayOfWeek.Saturday or DayOfWeek.Sunday) continue;
+            
+            days.Add(day);
         }
 
         return days;

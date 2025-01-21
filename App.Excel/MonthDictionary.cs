@@ -1,4 +1,4 @@
-namespace App.Console;
+namespace App.Generator_Planu;
 
 public static class MonthDictionary
 {
